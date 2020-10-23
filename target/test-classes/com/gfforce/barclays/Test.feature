@@ -7,6 +7,9 @@ Feature: Title of your feature
   @tag1
   Scenario: Title of your scenario
     Given Launch gfforce application
+    #When User enter username 
+    #When User enter password
+    #When User do navigation
     
 
  
