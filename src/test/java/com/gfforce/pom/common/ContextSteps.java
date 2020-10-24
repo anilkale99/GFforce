@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.cucumber.java.Before;
 
+import java.util.concurrent.TimeUnit;
+
 public class ContextSteps {
 
 	   private static boolean initialized = false;
@@ -31,7 +33,7 @@ public class ContextSteps {
 //	    	  handlSSLErr.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
 	    	  System.setProperty("webdriver.chrome.driver", "src/test/resources/lib/chromedriver_win32_forCh_B86/chromedriver.exe");
 	          driver = new ChromeDriver(options);
-	          
+	          driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	         initialized = true;
 	      }
 	   }
