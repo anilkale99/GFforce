@@ -22,9 +22,12 @@ public class CommonLocators {
             case "from_date": LOCATOR_VALUE = By.xpath("//input[@id='from_dt']"); break;
             case "to_date": LOCATOR_VALUE = By.xpath("//input[@id='to_dt']"); break;
             case "go": LOCATOR_VALUE = By.xpath("//input[@name='Go']"); break;
+            case "sign-out": LOCATOR_VALUE = By.linkText("Sign out"); break;
+            case "Open opportunity": LOCATOR_VALUE = By.xpath("//*[text()='" + fieldName + "']//following::a"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
         return LOCATOR_VALUE;
     }
+
 }

@@ -13,9 +13,9 @@ public class VolunteeringSteps extends Volunteering {
         super(contextSteps);
     }
 
-    @When("User clicks on Volunteering menu")
-    public void clickVolunteeringLink(){
-        clickVolunteering();
+    @When("User clicks on {string} menu")
+    public void clickSubMenu(String menu){
+        clickOnSubMenu(menu);
     }
 
     @Then("Visible submenu for \"([^\"]*)\" is$")
@@ -38,10 +38,24 @@ public class VolunteeringSteps extends Volunteering {
         selectValue(value, dropdownName);
     }
 
-    @When("User clicks on {string} button")
+    @When("User clicks on {string}")
     public void clickOnButton(String fieldName){
         clickButton(fieldName);
     }
 
+    @When("Visible options for {string} are")
+    public void subMenuOptions(String subMenuName, List<String> subMenuOptions){
+        validateSubMenuOptions(subMenuName, subMenuOptions);
+    }
+
+    @When("User clicks to create {string}")
+    public void userCreatesOpportunity(String opportunityType){
+        clickCreateOpportunity(opportunityType);
+    }
+
+    @Then("close browser")
+    public void closeBrowser(){
+        closeAllBrowsers();
+    }
 
 }

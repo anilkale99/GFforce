@@ -3,6 +3,7 @@ package com.gfforce.pom.pages;
 import com.gfforce.pom.common.ContextSteps;
 import com.gfforce.pom.locators.CommonLocators;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -49,4 +50,22 @@ public class Volunteering {
     public void clickButton(String fieldName){
         driver.findElement(CommonLocators.getLocatorForField(fieldName)).click();
     }
+
+    public void validateSubMenuOptions(String subMenuName, List<String> subMenuOptions){
+        for (String optionName: subMenuOptions) {
+            List<WebElement> list = driver.findElements(By.xpath("//*[text()='" + optionName + "']"));
+            Assert.assertTrue("Not found option: "+optionName+" under "+subMenuName, list.size() == 1);
+        }
+    }
+
+    public void clickCreateOpportunity(String opportunityType){
+        String link = driver.findElement(CommonLocators.getLocatorForField(opportunityType)).getAttribute("href");
+        driver.navigate().to(link);
+    }
+
+    public void closeAllBrowsers(){
+        ContextSteps.initialized = false;
+        driver.close();
+    }
+
 }

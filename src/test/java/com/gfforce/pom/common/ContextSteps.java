@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ContextSteps {
 
-	   private static boolean initialized = false;
+	   public static boolean initialized = false;
 
 	   private WebDriver driver;
 
