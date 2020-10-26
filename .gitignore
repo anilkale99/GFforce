@@ -1,6 +1,10 @@
-target/*
-target/.settings
-target/*.json
-target/*.class
-target/surefire-reports/*.xml
-target/surefire-reports/*.txt
+
+.idea/
+target/
+target/test-classes/com/gfforce/pom/common/
+target/test-classes/com/gfforce/pom/navigation/
+target/test-classes/com/gfforce/runner/
+target/test-classes/com/gfforce/steps/barclays/volunteering/
+target/test-classes/com/gfforce/steps/common/
+target/test-classes/com/gfforce/utilities/
+
