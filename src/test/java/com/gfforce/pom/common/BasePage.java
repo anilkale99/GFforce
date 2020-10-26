@@ -1,5 +1,9 @@
 package com.gfforce.pom.common;
 
-public class BasePage {
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
+public class BasePage {
+	
+	
 }

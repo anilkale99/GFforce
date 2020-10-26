@@ -1,0 +1,6 @@
+target/*
+target/.settings
+target/*.json
+target/*.class
+target/surefire-reports/*.xml
+target/surefire-reports/*.txt
