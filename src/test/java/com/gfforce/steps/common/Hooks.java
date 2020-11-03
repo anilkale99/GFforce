@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.gfforce.pom.common.ContextSteps;
+import com.gfforce.utilities.PropertiesOperation;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -20,7 +21,7 @@ public class Hooks {
 	@Before
     public void beforeScenario() throws InterruptedException{
         System.out.println("This will run before the Scenario");
-        driver.get("https://barclays.dev-givingforce.com/");
+        driver.get(PropertiesOperation.getRadicalValueBykey("url"));
 		driver.findElement(By.xpath("//button[@id='details-button']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
