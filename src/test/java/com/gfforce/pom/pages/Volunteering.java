@@ -12,6 +12,9 @@ import java.util.List;
 
 public class Volunteering {
     WebDriver driver;
+    
+    String xpath ="";
+    
 
     public Volunteering(ContextSteps contextSteps){
         driver = contextSteps.getDriver();
