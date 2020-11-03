@@ -1,4 +1,4 @@
-package com.gfforce.steps.common;
+package com.gfforce.steps.barclays.volunteering;
 
 import com.gfforce.pom.common.ContextSteps;
 import com.gfforce.pom.pages.Volunteering;
@@ -28,21 +28,14 @@ public class VolunteeringSteps extends Volunteering {
         clickOnSubMenu(subMenuName);
     }
 
-    @When("User enters value {string} in {string} field")
-    public void enterValueInfield(String value, String fieldName){
-        enterValue(value, fieldName);
-    }
+    
 
     @When("User selects value {string} from {string} dropdown")
     public void selectValueFromDropdown(String value, String dropdownName){
         selectValue(value, dropdownName);
     }
 
-    @When("User clicks on {string}")
-    public void clickOnButton(String fieldName){
-        clickButton(fieldName);
-    }
-
+    
     @When("Visible options for {string} are")
     public void subMenuOptions(String subMenuName, List<String> subMenuOptions){
         validateSubMenuOptions(subMenuName, subMenuOptions);
@@ -53,9 +46,9 @@ public class VolunteeringSteps extends Volunteering {
         clickCreateOpportunity(opportunityType);
     }
 
-    @Then("close browser")
-    public void closeBrowser(){
-        closeAllBrowsers();
-    }
+//    @Then("close browser")
+//    public void closeBrowser(){
+//        closeAllBrowsers();
+//    }
 
 }

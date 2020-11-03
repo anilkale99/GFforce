@@ -2,7 +2,7 @@
 Feature: Volunteering feature
 
   Scenario: Search for an opportunity
-    Given User is on application home page
+    #Given User is on application home page
     When User enters value "jyoti123" in "username" field
     And User enters value "Abcd@1234" in "password" field
     And User clicks on "sign-in"
@@ -21,12 +21,12 @@ Feature: Volunteering feature
     And User enters value "20 Nov 2020" in "to_date" field
     And User clicks on "go"
     And User clicks on "sign-out"
-    Then close browser
+    #Then close browser
 
 
   @create
   Scenario: Create Open Individual Opportunity
-    Given User is on application home page
+    #Given User is on application home page
     When User enters value "jyoti123" in "username" field
     And User enters value "Abcd@1234" in "password" field
     And User clicks on "sign-in"

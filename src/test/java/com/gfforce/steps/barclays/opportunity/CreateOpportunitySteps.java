@@ -1,4 +1,4 @@
-package com.gfforce.steps.barclays.volunteering;
+package com.gfforce.steps.barclays.opportunity;
 
 import org.openqa.selenium.WebDriver;
 
