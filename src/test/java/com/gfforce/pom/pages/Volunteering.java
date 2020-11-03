@@ -15,6 +15,7 @@ public class Volunteering {
 
     public Volunteering(ContextSteps contextSteps){
         driver = contextSteps.getDriver();
+        
     }
 
     public void clickVolunteering(){
@@ -34,12 +35,7 @@ public class Volunteering {
         driver.findElement((CommonLocators.getSubMenuLocator(menuName))).click();
     }
 
-    public void enterValue(String value, String fieldName){
-        System.out.println("Entering value: " + value + " in field: " + fieldName);
-        WebElement field = driver.findElement(CommonLocators.getLocatorForField(fieldName));
-        field.clear();
-        field.sendKeys(value);
-    }
+    
 
     public void selectValue(String value, String dropdownName){
         System.out.println("Selecting value: " + value + " from dropdown: " + dropdownName);
@@ -47,10 +43,7 @@ public class Volunteering {
         dd.selectByVisibleText(value);
     }
 
-    public void clickButton(String fieldName){
-        driver.findElement(CommonLocators.getLocatorForField(fieldName)).click();
-    }
-
+   
     public void validateSubMenuOptions(String subMenuName, List<String> subMenuOptions){
         for (String optionName: subMenuOptions) {
             List<WebElement> list = driver.findElements(By.xpath("//*[text()='" + optionName + "']"));
@@ -63,9 +56,9 @@ public class Volunteering {
         driver.navigate().to(link);
     }
 
-    public void closeAllBrowsers(){
-        ContextSteps.initialized = false;
-        driver.close();
-    }
+//    public void closeAllBrowsers(){
+//        ContextSteps.initialized = false;
+//        driver.close();
+//    }
 
 }

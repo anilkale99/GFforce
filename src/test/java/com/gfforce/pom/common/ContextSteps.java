@@ -34,6 +34,7 @@ public class ContextSteps {
 	    	  System.setProperty("webdriver.chrome.driver", "src/test/resources/lib/chromedriver_win32_forCh_B86/chromedriver.exe");
 	          driver = new ChromeDriver(options);
 	          driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	          driver.manage().window().maximize();
 	         initialized = true;
 	      }
 	   }
