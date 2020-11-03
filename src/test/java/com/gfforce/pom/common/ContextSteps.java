@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.gfforce.utilities.PropertiesOperation;
+
 import io.cucumber.java.Before;
 
 import java.util.concurrent.TimeUnit;
@@ -17,27 +19,31 @@ public class ContextSteps {
 	   private WebDriver driver;
 
 	   //@Before
-	   public void setUp() throws Exception {
-	      if (!initialized) {
-	         // initialize the driver
-	    	  
-	    	  ChromeOptions options = new ChromeOptions();
-		       //options.setExperimentalOption("prefs", chromePrefs);
-		       options.addArguments("--test-type");
-		       options.addArguments("--disable-extensions"); //to disable browser extension popup
-		       DesiredCapabilities cap = DesiredCapabilities.chrome();
-		       cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-		       cap.setCapability(ChromeOptions.CAPABILITY, options);
-		       
-//	    	  DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome ()    ;   
-//	    	  handlSSLErr.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
-	    	  System.setProperty("webdriver.chrome.driver", "src/test/resources/lib/chromedriver_win32_forCh_B86/chromedriver.exe");
-	          driver = new ChromeDriver(options);
-	          driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	          driver.manage().window().maximize();
-	         initialized = true;
-	      }
-	   }
+	public void setUp() throws Exception {
+		if (!initialized) {
+			// initialize the driver
+			if (PropertiesOperation.getRadicalValueBykey("browser").equalsIgnoreCase("chrome")) {
+				ChromeOptions options = new ChromeOptions();
+				// options.setExperimentalOption("prefs", chromePrefs);
+				options.addArguments("--test-type");
+				options.addArguments("--disable-extensions"); // to disable	browser extension  popup
+				DesiredCapabilities cap = DesiredCapabilities.chrome();
+				cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+				cap.setCapability(ChromeOptions.CAPABILITY, options);
+
+				// DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome
+				// () ;
+				// handlSSLErr.setCapability (CapabilityType.ACCEPT_SSL_CERTS,
+				// true);
+				System.setProperty("webdriver.chrome.driver",
+						"src/test/resources/lib/chromedriver_win32_forCh_B86/chromedriver.exe");
+				driver = new ChromeDriver(options);
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				driver.manage().window().maximize();
+			}
+			initialized = true;
+		}
+	}
 
 	   public WebDriver getDriver() {
 	      return driver;
