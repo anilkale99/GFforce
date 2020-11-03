@@ -2,6 +2,7 @@ package com.gfforce.pom.pages;
 
 import com.gfforce.pom.common.ContextSteps;
 import com.gfforce.pom.locators.CommonLocators;
+import com.gfforce.utilities.DateSelector;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -54,10 +55,42 @@ public class Volunteering {
         }
     }
 
+
+    public void validateSubMenuOptions(List<String> subMenuOptions){
+        for (String optionName: subMenuOptions) {
+            List<WebElement> list = driver.findElements(By.xpath("//*[text()='" + optionName + "']"));
+            Assert.assertTrue("Not found option: "+ optionName, list.size() == 1);
+        }
+    }
+
     public void clickCreateOpportunity(String opportunityType){
         String link = driver.findElement(CommonLocators.getLocatorForField(opportunityType)).getAttribute("href");
         driver.navigate().to(link);
     }
+
+    public void selectValueWithIndex(String index, String value){
+        driver.findElement(CommonLocators.getLocatorForField(value, index)).click();
+    }
+
+    public void selectDateFromDatePicker(String date, String datePicker){
+        DateSelector.selectDate(driver, date, datePicker);
+    }
+
+    public void selectValueFromList(String inputValue, String listName){
+        By locator = null;
+        if (listName.equals("time")){
+            locator = By.xpath("//ul[@class='ui-timepicker-list']/li");
+        } else if(listName.equals("tags")){
+            locator = By.xpath("//ul[@class='chzn-results']/li");
+        }
+        List<WebElement> allTimes = driver.findElements(locator);
+        for (WebElement ele: allTimes) {
+            if(ele.getText().equals(inputValue)){
+                ele.click();
+            }
+        }
+    }
+
 
 //    public void closeAllBrowsers(){
 //        ContextSteps.initialized = false;
