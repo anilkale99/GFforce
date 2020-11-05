@@ -13,7 +13,9 @@ import io.cucumber.junit.CucumberOptions;
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
 				"json:target/json-report/cucumber-report11121.json"
-		}
+		},
+		tags = {"@create"}
+
 		
 		)
 public class RunVolunteeringTest {

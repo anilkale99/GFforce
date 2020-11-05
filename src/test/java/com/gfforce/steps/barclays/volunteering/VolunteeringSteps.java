@@ -46,6 +46,26 @@ public class VolunteeringSteps extends Volunteering {
         clickCreateOpportunity(opportunityType);
     }
 
+    @When("User selects option {string} from displayed {string}")
+    public void selectValueFromResult(String index, String value){
+        selectValueWithIndex(index, value);
+    }
+
+    @When("User selects {string} from {string}")
+    public void userSelectsDate(String date, String datePicker){
+        selectDateFromDatePicker(date, datePicker);
+    }
+
+    @When("Visible options are")
+    public void subMenuOptions(List<String> subMenuOptions) {
+        validateSubMenuOptions(subMenuOptions);
+    }
+
+    @When("User selects value {string} from {string} list")
+    public void selectTime(String inputValue, String listName) {
+        selectValueFromList(inputValue, listName);
+    }
+
 //    @Then("close browser")
 //    public void closeBrowser(){
 //        closeAllBrowsers();
