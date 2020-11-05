@@ -24,8 +24,8 @@ public class Login extends BaseAction{
     }
     
     @When("User clicks on {string}")
-    public void clickOnButton(String fieldName){
-        clickButton(fieldName);
+    public void clickOnElement(String fieldName){
+        clickElement(fieldName);
     }
 
 
