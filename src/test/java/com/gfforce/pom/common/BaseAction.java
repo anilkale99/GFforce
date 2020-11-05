@@ -14,7 +14,7 @@ public class BaseAction {
 
 	}
 
-	public void clickButton(String fieldName) {
+	public void clickElement(String fieldName) {
 		driver.findElement(CommonLocators.getLocatorForField(fieldName)).click();
 	}
 

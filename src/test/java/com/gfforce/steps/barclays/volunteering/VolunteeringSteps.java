@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.List;
+import java.util.Map;
 
 public class VolunteeringSteps extends Volunteering {
 
@@ -28,7 +29,6 @@ public class VolunteeringSteps extends Volunteering {
         clickOnSubMenu(subMenuName);
     }
 
-    
 
     @When("User selects value {string} from {string} dropdown")
     public void selectValueFromDropdown(String value, String dropdownName){
@@ -65,6 +65,62 @@ public class VolunteeringSteps extends Volunteering {
     public void selectTime(String inputValue, String listName) {
         selectValueFromList(inputValue, listName);
     }
+
+    @When("User enters value in field")
+    public void enterValueInField(Map<String, String> fieldValueMap) {
+        enterValueInEachField(fieldValueMap);
+    }
+
+    @When("User clicks on {string} and selects value {string}")
+    public void UserClickAndSelectValue(String field, String value) {
+        clickAndSelectValue(field, value);
+    }
+
+    @When("User clicks on {string} to upload {string}")
+    public void userUploadsDocument(String locator, String fileName) {
+        uploadADocument(locator,fileName);
+    }
+
+    @When("User waits for {string} operation to complete")
+    public void userWaitsForOperation(String action) {
+        waitForOperationToComplete(action);
+    }
+
+    @When("User clicks on list to select value")
+    public void userClickOnListToSelectValue(Map<String, String> fieldValueMap) {
+        clickAndSelectValuesFromMap(fieldValueMap);
+    }
+
+    @When("User clicks on {string} opportunity")
+    public void userClickOnListToSelectValue(String opportunityName) {
+        clickOnOpportunity(opportunityName);
+    }
+
+    @When("All open opportunities are displayed")
+    public void allOpenOpportunitiesAreDisplayed() {
+        verifyOpportunitiesAreDisplayed();
+    }
+
+    @When("{string} details are displayed")
+    public void detailsAreDisplayed(String textOnPage) {
+        verifyDetailsAreDisplayed(textOnPage);
+    }
+
+    @When("User scrolls down {int} page")
+    public void userScrollsPageDown(int numberOfPages) throws InterruptedException {
+        scrollPageDown(numberOfPages);
+    }
+
+    @When("User accepts all terms and conditions")
+    public void userAcceptsAllTerms() {
+        acceptAllTermsAndConditions();
+    }
+
+    @When("User selects preference")
+    public void userSelectsPreference(Map<String, String> userPreference) {
+        selectPreference(userPreference);
+    }
+
 
 //    @Then("close browser")
 //    public void closeBrowser(){
