@@ -78,8 +78,8 @@ Feature: Volunteering feature
 
     @apply
   Scenario: Apply for an opportunity
-    When User enters value "jyoti123" in "username" field
-    And User enters value "Abcd@1234" in "password" field
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
     And User clicks on "sign-in"
     When User clicks on "Volunteering" menu
     And User clicks on "Search Opportunities" sub-menu
@@ -89,7 +89,7 @@ Feature: Volunteering feature
     Then "Helping hand" details are displayed
     When User clicks on "Apply Now"
     Then "Sign up to volunteer" details are displayed
-    When User accepts all terms and conditions
+    When User accepts all terms and conditions for "volunteering"
     And User scrolls down 1 page
     And User clicks on "Continue"
     And User selects preference
@@ -98,8 +98,24 @@ Feature: Volunteering feature
       And User clicks on "Continue"
       And User clicks on "Next"
       And User clicks on "Confirm"
+      And User clicks on "sign-out"
 
-
+      @edit
+  Scenario: Edit an Opportunity
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
+    And User clicks on "sign-in"
+    When User clicks on "Volunteering" menu
+    And User clicks on "Your open opportunities" sub-menu
+    Then "Volunteering opportunities" details are displayed
+    When User clicks on "Edit opportunity" for "Helping hand again"
+    Then "Update volunteering opportunity" details are displayed
+        When User enters value "Coaching Helping Hands" in "title" field
+        #And User scrolls down 6 page
+        And User scrolls to "Next" to "click"
+        And User scrolls to "Update" to "click"
+        Then "Thank you for updating your volunteering opportunity" is displayed
+        And User clicks on "sign-out"
 
 
 
