@@ -129,11 +129,19 @@ public class Volunteering extends BaseAction {
         Thread.sleep(3000);
     }
 
-    public void acceptAllTermsAndConditions(){
-        driver.findElement(By.xpath("//input[@id='checklist1']")).click();
-        driver.findElement(By.xpath("//input[@id='checklist2']")).click();
-        driver.findElement(By.xpath("//input[@id='checklist25']")).click();
-        driver.findElement(By.xpath("//input[@id='checklist26']")).click();
+    public void acceptAllTermsAndConditions(String forAction){
+
+        if (forAction.equals("volunteering")){
+            driver.findElement(By.xpath("//input[@id='checklist1']")).click();
+            driver.findElement(By.xpath("//input[@id='checklist2']")).click();
+            driver.findElement(By.xpath("//input[@id='checklist25']")).click();
+            driver.findElement(By.xpath("//input[@id='checklist26']")).click();
+        } else if(forAction.equals("grants")){
+            driver.findElement(By.xpath("//input[@id='checklist27']")).click();
+            driver.findElement(By.xpath("//input[@id='checklist28']")).click();
+            driver.findElement(By.xpath("//input[@id='checklist29']")).click();
+        }
+
     }
 
     public void selectPreference(Map<String, String> userPreference){
@@ -141,6 +149,23 @@ public class Volunteering extends BaseAction {
             driver.findElement(By.xpath("//*[@id='"+userPreference.get(key)+"']")).click();
         }
 
+    }
+
+    public void editOpportunity(String action, String name){
+        driver.findElement(CommonLocators.getLocatorForField(action,name)).click();
+    }
+
+    public void userSelects(String text){
+        driver.findElement(By.xpath("//*[contains(text(), '"+ text +"')]//preceding-sibling::input")).click();
+    }
+
+    public void scrollToElement(String element, String action) throws InterruptedException {
+        WebElement ele = driver.findElement(CommonLocators.getLocatorForField(element));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+        Thread.sleep(2000);
+        if (action.equals("click")){
+            ele.click();
+        }
     }
 
     public void selectValueFromList(String inputValue, String listName){
