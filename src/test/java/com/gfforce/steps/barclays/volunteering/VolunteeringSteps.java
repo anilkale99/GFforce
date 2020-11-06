@@ -111,14 +111,34 @@ public class VolunteeringSteps extends Volunteering {
         scrollPageDown(numberOfPages);
     }
 
-    @When("User accepts all terms and conditions")
-    public void userAcceptsAllTerms() {
-        acceptAllTermsAndConditions();
+    @When("User accepts all terms and conditions for {string}")
+    public void userAcceptsAllTerms(String forAction) {
+        acceptAllTermsAndConditions(forAction);
     }
 
     @When("User selects preference")
     public void userSelectsPreference(Map<String, String> userPreference) {
         selectPreference(userPreference);
+    }
+
+    @When("User clicks on {string} for {string}")
+    public void userEditsOpportunity(String action, String name) {
+        editOpportunity(action, name);
+    }
+
+    @When("User scrolls to {string} to {string}")
+    public void userScrollsToElement(String element, String action) throws InterruptedException {
+        scrollToElement(element, action);
+    }
+
+    @When("{string} is displayed")
+    public void messageIsDisplayed(String textOnPage) {
+        verifyDetailsAreDisplayed(textOnPage);
+    }
+
+    @When("User selects {string}")
+    public void userSelection(String text) {
+        userSelects(text);
     }
 
 

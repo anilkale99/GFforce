@@ -37,8 +37,7 @@ public class CommonLocators {
             case "sign-out": LOCATOR_VALUE = By.linkText("Sign out"); break;
             case "Open opportunity":
             case "Reserved opportunity":
-            case "Individual":
-                LOCATOR_VALUE = By.xpath("//*[text()='" + fieldName + "']//following::a"); break;
+            case "Individual": LOCATOR_VALUE = By.xpath("//*[text()='" + fieldName + "']//following::a"); break;
             case "title": LOCATOR_VALUE = By.xpath("//input[@id='title']"); break;
             case "organisation": LOCATOR_VALUE = By.xpath("//input[@id='charity_name']"); break;
             case "Search": LOCATOR_VALUE = By.xpath("//input[@name='go']"); break;
@@ -62,6 +61,9 @@ public class CommonLocators {
             case "Continue": LOCATOR_VALUE = By.xpath("//*[@name='continue' and @type='button']"); break;
             case "Submit and Finish": LOCATOR_VALUE = By.xpath("//*[@value='Submit and Finish ']"); break;
             case "Apply Now": LOCATOR_VALUE = By.xpath("//input[@name='apply']"); break;
+            case "Update": LOCATOR_VALUE = By.xpath("//input[@name='Confirm']"); break;
+            case "grants required": LOCATOR_VALUE = By.xpath("//input[@name='amount_raised_local']"); break;
+            case "Breakdown": LOCATOR_VALUE = By.xpath("//textarea[@name='details']"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
@@ -73,6 +75,7 @@ public class CommonLocators {
         switch(fieldName){
             case "results": LOCATOR_VALUE = By.xpath("//*[@id='getCharity']/div[" + valueForXpath + "]/a"); break;
             case "opportunity": LOCATOR_VALUE = By.linkText(valueForXpath); break;
+            case "Edit opportunity": LOCATOR_VALUE = By.xpath("//*[text()='" + valueForXpath + "']//following::a"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
