@@ -58,8 +58,9 @@ public class CommonLocators {
             case "accept guidelines": LOCATOR_VALUE = By.xpath("//*[@id='checklist30']"); break;
             case "accept policy": LOCATOR_VALUE = By.xpath("//*[@id='checklist31']"); break;
             case "Next": LOCATOR_VALUE = By.xpath("//*[@name='continue']"); break;
-            case "Continue": LOCATOR_VALUE = By.xpath("//*[@name='continue' and @type='button']"); break;
+            case "Continue": LOCATOR_VALUE = By.xpath("//*[@name='continue' and @type='button'] | //*[@name='continue' and @id='continue_button'] | //*[@name='continue' and @type='submit' and @value='Continue >']"); break;
             case "Submit and Finish": LOCATOR_VALUE = By.xpath("//*[@value='Submit and Finish ']"); break;
+            case "Back to your homepage": LOCATOR_VALUE = By.xpath("//a[text()='Back to your homepage']"); break;
             case "Apply Now": LOCATOR_VALUE = By.xpath("//input[@name='apply']"); break;
             case "Update": LOCATOR_VALUE = By.xpath("//input[@name='Confirm']"); break;
             case "grants required": LOCATOR_VALUE = By.xpath("//input[@name='amount_raised_local']"); break;

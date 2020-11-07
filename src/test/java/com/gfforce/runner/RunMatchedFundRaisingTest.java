@@ -12,11 +12,11 @@ import io.cucumber.junit.CucumberOptions;
 		glue={"com.gfforce.steps"},
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
-				"json:target/json-report/cucumber-report11121.json"
+				"json:target/json-report/cucumber-reportMatchedFundRaising.json"
 		}
 
 		
 		)
-public class RunFundRaisingTest {
+public class RunMatchedFundRaisingTest {
 
 }
