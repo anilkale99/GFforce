@@ -1,1 +1,3 @@
 1. Add image, resize and upload
+2. Table utility class         - Done
+3. Random number utility method
