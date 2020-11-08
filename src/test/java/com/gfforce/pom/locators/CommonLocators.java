@@ -7,7 +7,7 @@ public class CommonLocators {
     public static final By VOLUNTEERING_LINK = By.linkText("Volunteering");
     public static final By SUBMENU_PATH = By.xpath("//*[@class='tabs col-sm-11']/ul/li");
 
-    public static By getSubMenuLocator(String subMenuName) {
+    public static By getLinkLocator(String subMenuName) {
         return By.linkText(subMenuName);
     }
 
@@ -62,9 +62,11 @@ public class CommonLocators {
             case "Submit and Finish": LOCATOR_VALUE = By.xpath("//*[@value='Submit and Finish ']"); break;
             case "Back to your homepage": LOCATOR_VALUE = By.xpath("//a[text()='Back to your homepage']"); break;
             case "Apply Now": LOCATOR_VALUE = By.xpath("//input[@name='apply']"); break;
-            case "Update": LOCATOR_VALUE = By.xpath("//input[@name='Confirm']"); break;
+            case "Update": LOCATOR_VALUE = By.xpath("//input[@value='"+fieldName+"']"); break;
             case "grants required": LOCATOR_VALUE = By.xpath("//input[@name='amount_raised_local']"); break;
             case "Breakdown": LOCATOR_VALUE = By.xpath("//textarea[@name='details']"); break;
+            case "Submit":  LOCATOR_VALUE = By.xpath("//input[@value='"+fieldName+"']"); break;
+            case "List Employees": LOCATOR_VALUE = By.xpath("//textarea[@id='q_id_2001']"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
@@ -76,7 +78,11 @@ public class CommonLocators {
         switch(fieldName){
             case "results": LOCATOR_VALUE = By.xpath("//*[@id='getCharity']/div[" + valueForXpath + "]/a"); break;
             case "opportunity": LOCATOR_VALUE = By.linkText(valueForXpath); break;
-            case "Edit opportunity": LOCATOR_VALUE = By.xpath("//*[text()='" + valueForXpath + "']//following::a"); break;
+            case "Edit opportunity":
+            case "Apply for a grant":
+            case "Start application":
+            case "View application(s)":
+                LOCATOR_VALUE = By.xpath("//*[text()='" + valueForXpath + "']//following::a"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
