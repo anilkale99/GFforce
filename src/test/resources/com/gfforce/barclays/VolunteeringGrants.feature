@@ -1,3 +1,4 @@
+@Vol
 Feature: Volunteering Grants
   @vg
   Scenario: Create Volunteering Grants application
@@ -56,4 +57,51 @@ Feature: Volunteering Grants
     And User clicks on "Next"
     And User scrolls to "Confirm" to "click"
     Then "Your volunteering reference number is" is displayed
-    When User clicks on "sign-out"
+    And User clicks on "sign-out"
+
+    @editVolG
+  Scenario: Update Volunteering Grant application
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
+    And User clicks on "sign-in"
+    When User clicks on "Volunteering" menu
+    And User clicks on "Your volunteering" sub-menu
+    Then "volunteering applications" is displayed
+    When User clicks on link "Update grant - VG433144-8"
+    Then "Volunteering grant: VG433144-8" is displayed
+    When User enters value "1500" in "grants required" field
+    And User enters value "Refreshment - 500\n Attire - 1000" in "Breakdown" field
+    And User scrolls to "Update" to "click"
+    Then "Thank you for updating your application" is displayed
+    And "Back to your homepage" is displayed
+      And User clicks on "sign-out"
+
+#  @createVolG
+#  Scenario: Edit Volunteering application to create Volunteering Grant application
+#    When User enters value "md123" in "username" field
+#    And User enters value "Abcd@12345" in "password" field
+#    And User clicks on "sign-in"
+#    When User clicks on "Volunteering" menu
+#    And User clicks on "Your open opportunities" sub-menu
+#    Then "Volunteering opportunities" details are displayed
+#    When User clicks on "Edit opportunity" for "Coaching Helping Hands"
+#    Then "Update volunteering opportunity" details are displayed
+#    When User scrolls to "Next" to "click"
+
+    @createVolG
+  Scenario: Create VG application from Your Volunteering
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
+    And User clicks on "sign-in"
+    When User clicks on "Volunteering" menu
+      And User clicks on "Your volunteering" sub-menu
+      Then "volunteering applications" is displayed
+      When User clicks on "Apply for a grant" for "Volunteering at Barclays (VOL433144-19)"
+      Then "Apply for volunteering grant" is displayed
+      When User accepts all terms and conditions for "grants"
+      And User enters value "1000" in "grants required" field
+      And User enters value "blah blah blah" in "Breakdown" field
+      And User scrolls to "Submit" to "click"
+      Then "Thank you for applying your application" is displayed
+      And "Back to your homepage" is displayed
+      And User clicks on "sign-out"

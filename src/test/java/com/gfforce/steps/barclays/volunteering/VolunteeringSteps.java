@@ -16,7 +16,7 @@ public class VolunteeringSteps extends Volunteering {
 
     @When("User clicks on {string} menu")
     public void clickSubMenu(String menu){
-        clickOnSubMenu(menu);
+        clickOnLink(menu);
     }
 
     @Then("Visible submenu for \"([^\"]*)\" is$")
@@ -26,7 +26,7 @@ public class VolunteeringSteps extends Volunteering {
 
     @When("User clicks on {string} sub-menu")
     public void clickOnSubMenuItem(String subMenuName){
-        clickOnSubMenu(subMenuName);
+        clickOnLink(subMenuName);
     }
 
 
@@ -139,6 +139,11 @@ public class VolunteeringSteps extends Volunteering {
     @When("User selects {string}")
     public void userSelection(String text) {
         userSelects(text);
+    }
+
+    @When("User clicks on link {string}")
+    public void userClicksOnLink(String linkText) {
+        clickOnLink(linkText);
     }
 
 

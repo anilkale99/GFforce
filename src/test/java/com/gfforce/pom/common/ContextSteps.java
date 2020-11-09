@@ -17,6 +17,7 @@ public class ContextSteps {
 	   public static boolean initialized = false;
 
 	   private WebDriver driver;
+	   public static String nominationID;
 
 	   //@Before
 	public void setUp() throws Exception {
@@ -47,5 +48,9 @@ public class ContextSteps {
 
 	   public WebDriver getDriver() {
 	      return driver;
+	   }
+
+	   public static String getNominationID(){
+		return nominationID;
 	   }
 	}

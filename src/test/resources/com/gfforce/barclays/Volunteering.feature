@@ -1,4 +1,4 @@
-@tag
+@Vol
 Feature: Volunteering feature
 
   @create

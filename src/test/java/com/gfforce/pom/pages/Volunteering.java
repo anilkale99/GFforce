@@ -41,14 +41,8 @@ public class Volunteering extends BaseAction {
         }
     }
 
-    public void clickOnSubMenu(String menuName){
-        driver.findElement((CommonLocators.getSubMenuLocator(menuName))).click();
-    }
-
-    public void selectValue(String value, String dropdownName){
-        System.out.println("Selecting value: " + value + " from dropdown: " + dropdownName);
-        Select dd = new Select(driver.findElement(CommonLocators.getLocatorForField(dropdownName)));
-        dd.selectByVisibleText(value);
+    public void clickOnLink(String menuName){
+        driver.findElement((CommonLocators.getLinkLocator(menuName))).click();
     }
 
     public void validateSubMenuOptions(String subMenuName, List<String> subMenuOptions){
@@ -112,12 +106,6 @@ public class Volunteering extends BaseAction {
         Assert.assertTrue(allRows.size() > 0);
     }
 
-    public void verifyDetailsAreDisplayed(String textOnPage){
-        //WebElement ele = driver.findElement(By.xpath("//*[contains(text(), '"+opportunityName+"')]"));
-        WebDriverWait wait = new WebDriverWait(driver,20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '"+textOnPage+"')]")));
-    }
-
     public void clickOnOpportunity(String opportunityName){
         driver.findElement(CommonLocators.getLocatorForField("opportunity", opportunityName)).click();
     }
@@ -157,15 +145,6 @@ public class Volunteering extends BaseAction {
 
     public void userSelects(String text){
         driver.findElement(By.xpath("//*[contains(text(), '"+ text +"')]//preceding-sibling::input")).click();
-    }
-
-    public void scrollToElement(String element, String action) throws InterruptedException {
-        WebElement ele = driver.findElement(CommonLocators.getLocatorForField(element));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-        Thread.sleep(2000);
-        if (action.equals("click")){
-            ele.click();
-        }
     }
 
     public void selectValueFromList(String inputValue, String listName){

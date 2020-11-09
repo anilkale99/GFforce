@@ -8,13 +8,13 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		
-		features={"src/test/resources/com/gfforce/barclays/Volunteering.feature"},
+		features={"src/test/resources/com/gfforce/barclays"},
 		glue={"com.gfforce.steps"},
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
 				"json:target/json-report/cucumber-report11121.json"
-		},
-		tags = {"@apply"}
+		}
+		,tags = {"@CG"}
 
 		
 		)
