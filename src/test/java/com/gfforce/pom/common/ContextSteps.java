@@ -10,6 +10,7 @@ import com.gfforce.utilities.PropertiesOperation;
 
 import io.cucumber.java.Before;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class ContextSteps {
@@ -17,7 +18,7 @@ public class ContextSteps {
 	   public static boolean initialized = false;
 
 	   private WebDriver driver;
-	   public static String nominationID;
+	   public static HashMap<String, String> contextValuesMap = new HashMap<>();
 
 	   //@Before
 	public void setUp() throws Exception {
@@ -37,7 +38,7 @@ public class ContextSteps {
 				// handlSSLErr.setCapability (CapabilityType.ACCEPT_SSL_CERTS,
 				// true);
 				System.setProperty("webdriver.chrome.driver",
-						"src/test/resources/lib/chromedriver_win32_forCh_B86/chromedriver.exe");
+						"src/test/resources/lib/chromedriver_win32_B86.0.4/chromedriver.exe");
 				driver = new ChromeDriver(options);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
@@ -50,7 +51,7 @@ public class ContextSteps {
 	      return driver;
 	   }
 
-	   public static String getNominationID(){
-		return nominationID;
+	   public static String getContextValue(String key){
+			return contextValuesMap.get(key);
 	   }
 	}

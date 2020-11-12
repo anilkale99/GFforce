@@ -53,9 +53,9 @@ public class CharityGrantsSteps extends CharityGrants {
         storeNominationID();
     }
 
-    @When("User clicks on reference number starting with {}")
-    public void userClicksReferenceNumber(String partialText) throws InterruptedException {
-        clickReferenceNumber(partialText);
+    @When("User clicks on reference number")
+    public void userClicksReferenceNumber() throws InterruptedException {
+        clickReferenceNumber();
     }
 
     @When("Nomination details of the Charity Grant are displayed")
@@ -73,6 +73,34 @@ public class CharityGrantsSteps extends CharityGrants {
         verifyNominationDetailsOfReferenceNumber(referenceNumber, details);
     }
 
+    @When("Visible submenu options are")
+    public void userVerifiesSubmenu(List<String> subMenuOptions) throws InterruptedException {
+        validateSubMenuOptions(subMenuOptions);
+    }
 
+    @When("User clicks on {string} from menu")
+    public void userVerifiesSubmenu(String menuName) throws InterruptedException {
+        clickByLinkText(menuName);
+    }
+
+    @When("User clicks on {string} submenu")
+    public void userClicksSubmenu(String submenuName) throws InterruptedException {
+        clickByLinkText(submenuName);
+    }
+
+    @When("User clicks on {string} to {string}")
+    public void userApplyForFunding(String action, String funding) {
+        applyForFunding(action, funding);
+    }
+
+    @When("Verify {string} is displayed")
+    public void messageIsDisplayed(String textOnPage) {
+        verifyDetailsAreDisplayed(textOnPage);
+    }
+
+    @When("User enters value {string} in {string} on CG page")
+    public void userEntersValueInfield(String value, String fieldName){
+        enterValueInFieldWithName(value, fieldName);
+    }
 
 }

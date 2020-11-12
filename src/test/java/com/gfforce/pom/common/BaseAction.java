@@ -1,5 +1,7 @@
 package com.gfforce.pom.common;
 
+import com.gfforce.utilities.DateSelector;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.List;
 
 public class BaseAction {
 	
@@ -45,14 +48,14 @@ public class BaseAction {
 	public void scrollToElement(String element, String action) throws InterruptedException {
 		WebElement ele = driver.findElement(CommonLocators.getLocatorForField(element));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		if (action.equals("click")){
 			ele.click();
 		}
 	}
 
 	public void scrollToElement(By locator, String action) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		WebElement ele = driver.findElement(locator);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
 		Thread.sleep(1000);
@@ -84,6 +87,45 @@ public class BaseAction {
 		//WebElement ele = driver.findElement(By.xpath("//*[contains(text(), '"+opportunityName+"')]"));
 		WebDriverWait wait = new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '"+textOnPage+"')]")));
+	}
+
+	public void clickByLinkText(String linkText) throws InterruptedException {
+		//driver.findElement(By.linkText(linkText)).click();
+		scrollToElement(By.linkText(linkText), "click");
+	}
+
+	public void clickByPartialLinkText(String linkText) throws InterruptedException {
+		//driver.findElement(By.linkText(linkText)).click();
+		scrollToElement(By.partialLinkText(linkText), "click");
+	}
+
+	public void validateSubMenuOptions(List<String> subMenuOptions) throws InterruptedException {
+		Thread.sleep(2000);
+		for (String optionName: subMenuOptions) {
+			try {
+				List<WebElement> list = driver.findElements(By.xpath("//*[text()='" + optionName + "']"));
+				Assert.assertTrue("Not found option: "+optionName, list.size() == 1);
+			} catch (AssertionError e) {
+				driver.findElement(By.linkText(optionName));
+			}
+		}
+	}
+
+	public void enterValue(String value, By locator) {
+		WebElement field = driver.findElement(locator);
+		field.clear();
+		field.sendKeys(value);
+	}
+
+	public void scrollPageDown(int numberOfPages) throws InterruptedException {
+		int page = 400;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0," + page*numberOfPages +")");
+		Thread.sleep(3000);
+	}
+
+	public void selectDateFromDatePicker(String date, String datePicker) throws Exception {
+		DateSelector.selectDate(driver, date, datePicker);
 	}
 
 }

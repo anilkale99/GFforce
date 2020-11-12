@@ -1,4 +1,4 @@
-@CG
+@mdRegression
 Feature: Charity Grants feature
 
   @createCG
@@ -7,15 +7,15 @@ Feature: Charity Grants feature
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
     And User clicks on "sign-in"
-    When User clicks on "Charity Grants" menu
-    Then Visible submenu for "Charity Grants" is
+    When User clicks on "Charity Grants" from menu
+    Then Visible submenu options are
       | Overview |
       | Nominate |
       | Your Nominations |
-    And User clicks on "Start application" for "Apply for SoC funding"
-    Then "Nominate a charity" is displayed
-    And "Eligibility Questions" is displayed
-    When User enters value "Mohammad Daimi, Anil Kale" in "List Employees" field
+    And User clicks on "Start application" to "Apply for SoC funding"
+    Then Verify "Nominate a charity" is displayed
+    And Verify "Eligibility Questions" is displayed
+    When User enters value "Mohammad Daimi, Anil Kale" in "List Employees" on CG page
     And User selects options for "Eligibility Questions"
           | 1-2000 | No |
           | 1-2002 | No |
@@ -49,28 +49,44 @@ Feature: Charity Grants feature
     And User scrolls to button "Submit" to "click"
     And Store the nomination id
     Then "Thank you!" is displayed
-    When User clicks on reference number starting with CGN-
+
+    Scenario: Verify the newly create nomination
+      When User enters value "md123" in "username" field
+      And User enters value "Abcd@12345" in "password" field
+      And User clicks on "sign-in"
+      When User clicks on "Charity Grants" from menu
+      And User clicks on "Your Nominations" submenu
+    When User clicks on reference number
     Then Nomination details of the Charity Grant are displayed
     And User verifies below nomination details
         | Employee Reference | 12345 |
         | Country group      | Barclays-UK |
         | Name       | Mohammad Daimi |
         | Email      | jyoti.singh@givingforce.com |
-    And User clicks on "sign-out"
+    #And User clicks on "sign-out"
 
     @viewCG
   Scenario: Verify User is able to see CG Nomination on applications page
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
     And User clicks on "sign-in"
-    When User clicks on "Charity Grants" menu
-    And User clicks on "View application(s)" for "View your application(s)"
-      Then "Your nominations" is displayed
+    When User clicks on "Charity Grants" from menu
+    And User clicks on "View application(s)" to "View your application(s)"
+      Then Verify "Your nominations" is displayed
       And User verifies below nomination details for reference number "CGN-433144-8"
           | Date             | 08 Nov 2020 |
           | Charity Name     | Chai-Lifeline Cancer Care |
           | Status           | In progress               |
+      #And User clicks on "sign-out"
 
+  Scenario: View Charity Grant nominations
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
+    And User clicks on "sign-in"
+    When User clicks on "Charity Grants" from menu
+    And User clicks on "Your Nominations" submenu
+    Then Verify "Your nominations" is displayed
+    And Verify "CGN-433144-12" is displayed
 
 
 

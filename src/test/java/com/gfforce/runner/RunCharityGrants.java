@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
                 "html:target/cucumber-htmlreport",
                 "json:target/json-report/cucumber-report11121.json"
         }
-        ,tags = {"@viewCG"}
+        ,tags = {"@regressionMD"}
 
 
 )
