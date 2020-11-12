@@ -30,8 +30,9 @@ public class Hooks {
     @After
     public void afterScenario() throws InterruptedException{
         System.out.println("This will run after the Scenario");
-        Thread.sleep(30000);
-        //driver.quit();
+        Thread.sleep(3000);
+        driver.findElement(By.linkText("Sign out")).click();
+        driver.quit();
         ContextSteps.initialized=false;
     }
 

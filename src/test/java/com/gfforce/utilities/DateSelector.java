@@ -8,20 +8,29 @@ import java.util.concurrent.TimeUnit;
 
 public class DateSelector {
 
-    public static void selectDate(WebDriver driver, String date, String locatorValue) {
+    public static void selectDate(WebDriver driver, String date, String datePickerValue) throws Exception {
         
-		try {
-			driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//input[@id='start_dts']")).click();
-		} catch (Exception e) {
-			try {
-				driver.findElement(By.xpath("//input[@id='apply_by_dts']")).click();
-			} catch (Exception e1) {
-				driver.findElement(By.xpath("//input[@id='event_dts']")).click();
-			}
-		}finally{
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		}
+//		try {
+//			driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+//			driver.findElement(By.xpath("//input[@id='start_dts']")).click();
+//		} catch (Exception e) {
+//			try {
+//				driver.findElement(By.xpath("//input[@id='apply_by_dts']")).click();
+//			} catch (Exception e1) {
+//				driver.findElement(By.xpath("//input[@id='event_dts']")).click();
+//			}
+//		}finally{
+//			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		}
+        Thread.sleep(2000);
+        switch (datePickerValue){
+            case "start_dts": driver.findElement(By.xpath("//input[@id='start_dts']")).click(); break;
+            case "apply_by_dts": driver.findElement(By.xpath("//input[@id='apply_by_dts']")).click(); break;
+            case "event_dts": driver.findElement(By.xpath("//input[@id='event_dts']")).click(); break;
+            case "expected_payment_date": driver.findElement(By.xpath("//input[@id='expected_payment_date']")).click(); break;
+            default:
+                System.out.println("Invalid datepicker value provided");
+        }
 	
         String monthYearTextLocator = "//*[@class='datepicker-days']/table/thead/tr[2]/th[2]";
         String nextButton = "//*[@class='datepicker-days']/table/thead/tr[2]/th[3]";

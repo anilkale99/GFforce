@@ -15,30 +15,25 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on {string} menu")
-    public void clickSubMenu(String menu){
-        clickOnLink(menu);
-    }
-
-    @Then("Visible submenu for \"([^\"]*)\" is$")
-    public void verifySubmenu(String subMenuName, List<String> subMenuItems){
-        validateSubmenu(subMenuName, subMenuItems);
+    public void clickLink(String linkName) throws InterruptedException {
+        clickOnLink(linkName);
     }
 
     @When("User clicks on {string} sub-menu")
-    public void clickOnSubMenuItem(String subMenuName){
+    public void clickOnSubMenuItem(String subMenuName) throws InterruptedException {
         clickOnLink(subMenuName);
     }
 
 
-    @When("User selects value {string} from {string} dropdown")
-    public void selectValueFromDropdown(String value, String dropdownName){
-        selectValue(value, dropdownName);
+    @When("User clicks on an opportunity")
+    public void userClickOnOpportunity() throws InterruptedException {
+        clickOnOpportunity();
     }
 
-    
-    @When("Visible options for {string} are")
-    public void subMenuOptions(String subMenuName, List<String> subMenuOptions){
-        validateSubMenuOptions(subMenuName, subMenuOptions);
+
+    @When("User selects value {string} from {string} dropdown")
+    public void userSelectValueFromDropdown(String value, String dropdownName){
+        selectValueFromDropdown(value, dropdownName);
     }
 
     @When("User clicks to create {string}")
@@ -52,12 +47,12 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User selects {string} from {string}")
-    public void userSelectsDate(String date, String datePicker){
+    public void userSelectsDate(String date, String datePicker) throws Exception {
         selectDateFromDatePicker(date, datePicker);
     }
 
     @When("Visible options are")
-    public void subMenuOptions(List<String> subMenuOptions) {
+    public void subMenuOptions(List<String> subMenuOptions) throws InterruptedException {
         validateSubMenuOptions(subMenuOptions);
     }
 
@@ -92,8 +87,8 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on {string} opportunity")
-    public void userClickOnListToSelectValue(String opportunityName) {
-        clickOnOpportunity(opportunityName);
+    public void userClickOnListToSelectValue(String opportunityName) throws InterruptedException {
+        clickOnLink(opportunityName);
     }
 
     @When("All open opportunities are displayed")
@@ -104,6 +99,11 @@ public class VolunteeringSteps extends Volunteering {
     @When("{string} details are displayed")
     public void detailsAreDisplayed(String textOnPage) {
         verifyDetailsAreDisplayed(textOnPage);
+    }
+
+    @When("Opportunity details are displayed")
+    public void userVerifyOpportunityDetails() {
+        opportunityDetailsAreDisplayed();
     }
 
     @When("User scrolls down {int} page")
@@ -123,12 +123,22 @@ public class VolunteeringSteps extends Volunteering {
 
     @When("User clicks on {string} for {string}")
     public void userEditsOpportunity(String action, String name) {
-        editOpportunity(action, name);
+        editOpportunityByName(action, name);
+    }
+
+    @When("User clicks on Edit opportunity")
+    public void userClicksEditsOpportunity() {
+        editOpportunity();
+    }
+
+    @When("User clicks on Apply for a grant")
+    public void userClicksApplyForGrant() {
+        clickApplyForGrant();
     }
 
     @When("User scrolls to {string} to {string}")
     public void userScrollsToElement(String element, String action) throws InterruptedException {
-        scrollToElement(element, action);
+        scrollToElementOnPage(element, action);
     }
 
     @When("{string} is displayed")
@@ -142,10 +152,55 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on link {string}")
-    public void userClicksOnLink(String linkText) {
+    public void userClicksOnLink(String linkText) throws InterruptedException {
         clickOnLink(linkText);
     }
 
+    @When("User clicks on button {string}")
+    public void userClicksOnButton(String buttonName) {
+        clickOnAButton(buttonName);
+    }
+
+    @When("User clicks on {string} option")
+    public void userClickOnOption(String optionName) {
+        clickOnAButton(optionName);
+    }
+
+    @When("User enters value {string} in {string}")
+    public void userEntersValueInfield(String value, String fieldName){
+        enterValueInFieldWithName(value, fieldName);
+    }
+
+    @When("User enters title of opportunity")
+    public void userEntersTitle(){
+        enterTitle();
+    }
+
+    @When("Volunteering opportunities are displayed")
+    public void volunteeringOpportunitiesAreDisplayed(){
+        verifySearchResult();
+    }
+
+
+    @When("User can sort the results by clicking")
+    public void userCanSortResults(List<String> sortOptions) throws InterruptedException {
+        verifyOptions(sortOptions);
+    }
+
+    @When("User can navigate to opportunities by clicking")
+    public void userCanNavigate(List<String> typeOptions) throws InterruptedException {
+        verifyNavOptions(typeOptions);
+    }
+
+    @When("User clicks on {string} when popup appears")
+    public void userclicksContinueOnPopup(String buttonName){
+        try {
+            clickOnPopupButton(buttonName);
+            System.out.println("Clicked on popup continue");
+        } catch (Exception e){
+            System.out.println("No pop-up appeared");
+        }
+    }
 
 //    @Then("close browser")
 //    public void closeBrowser(){

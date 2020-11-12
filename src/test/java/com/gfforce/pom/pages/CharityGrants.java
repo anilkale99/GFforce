@@ -80,17 +80,18 @@ public class CharityGrants extends BaseAction {
     }
 
     public void storeNominationID(){
-        ContextSteps.nominationID  =driver.findElement(By.partialLinkText("CGN-")).getText();
+        ContextSteps.contextValuesMap.put("nominationID", driver.findElement(By.partialLinkText("CGN-")).getText());
     }
 
     public void checkNominationDetailsAreDisplayed(){
-        System.out.println("Verifying Nomination ID: " + ContextSteps.getNominationID());
-        verifyDetailsAreDisplayed(ContextSteps.getNominationID());
+        System.out.println("Verifying Nomination ID: " + ContextSteps.getContextValue("nominationID"));
+        verifyDetailsAreDisplayed(ContextSteps.getContextValue("nominationID"));
     }
 
-    public void clickReferenceNumber(String partialText) throws InterruptedException {
+    public void clickReferenceNumber() throws InterruptedException {
         //clickElement(By.partialLinkText(partialText));
-        scrollToElement(By.partialLinkText(partialText), "click");
+        String textToClick = ContextSteps.getContextValue("nominationID");
+        scrollToElement(By.linkText(textToClick), "click");
     }
 
     public void verifyNominationDetails(Map<String, String> nominationDetails){
@@ -121,6 +122,18 @@ public class CharityGrants extends BaseAction {
         }
     }
 
+    public void applyForFunding(String action, String name){
+        driver.findElement(getLocatorForField(action,name)).click();
+    }
+
+    public void enterValueInFieldWithName(String value, String fieldName){
+        enterValue(value, getLocatorForField(fieldName));
+    }
+
+    public void referenceNumberIsSaved(){
+
+    }
+
     public By getLocatorForField(String fieldName) {
         By LOCATOR_VALUE = null;
         switch(fieldName) {
@@ -142,6 +155,7 @@ public class CharityGrants extends BaseAction {
             case "Country group":
                 LOCATOR_VALUE = By.xpath("//*[@id='"+ fieldName +"']"); break;
             case "Email": LOCATOR_VALUE = By.xpath("//*[@id='root']/div[3]/div[1]/form/div[1]/div/div[1]/div[2]/div/span"); break;
+            case "List Employees": LOCATOR_VALUE = By.xpath("//textarea[@id='q_id_2001']"); break;
             default:
                 System.out.println("Invalid case value: " + fieldName);
         }
@@ -153,6 +167,9 @@ public class CharityGrants extends BaseAction {
         By LOCATOR_VALUE = null;
         switch(from){
             case "results": LOCATOR_VALUE = By.xpath("//div[@class='get-charity-container']/div/div/ul/li[" + option +"]/a"); break;
+            case "Start application":
+            case "View application(s)":
+                LOCATOR_VALUE = By.xpath("//*[text()='" + option + "']//following::a"); break;
             default:
                 System.out.println("Invalid case value: " + from);
         }
