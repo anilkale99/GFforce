@@ -32,6 +32,7 @@ public class Hooks {
         System.out.println("This will run after the Scenario");
         Thread.sleep(3000);
         driver.findElement(By.linkText("Sign out")).click();
+        Thread.sleep(3000);
         driver.quit();
         ContextSteps.initialized=false;
     }
