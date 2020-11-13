@@ -1,6 +1,6 @@
-@mdRegression @VolG
+@mdRegression @VolG @VolunteeringGrants
 Feature: Volunteering Grants
-  @vg
+  @vg @VolunteeringGrants
   Scenario: Create Volunteering Grants application
     #Given User is on application home page
     When User enters value "md123" in "username" field
@@ -60,7 +60,7 @@ Feature: Volunteering Grants
     Then "Your volunteering reference number is" is displayed
     #And User clicks on "sign-out"
 
-    @vgTest
+    @vgTest @VolunteeringGrants
   Scenario: Update Volunteering Grant application
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -77,7 +77,7 @@ Feature: Volunteering Grants
     And "Back to your homepage" is displayed
       #And User clicks on "sign-out"
 
-  @vgTestEdit
+  @vgTestEdit @VolunteeringGrants
   Scenario: Edit Volunteering application to create Volunteering Grant application
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -98,7 +98,7 @@ Feature: Volunteering Grants
     And User scrolls to "Confirm" to "click"
 
 
-    @vgTest
+    @vgTest @VolunteeringGrants
   Scenario: Create VG application from Your Volunteering
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field

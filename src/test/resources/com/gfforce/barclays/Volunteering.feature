@@ -1,7 +1,7 @@
-@mdRegression @Vol
+@mdRegression @Vol @Volunteering
 Feature: Volunteering feature
 
-  @create
+  @create @Volunteering
   Scenario: Create Open Individual Opportunity
     #Given User is on application home page
     When User enters value "md123" in "username" field
@@ -59,7 +59,7 @@ Feature: Volunteering feature
     And User clicks on button "Submit and Finish"
     #And User clicks on "sign-out"
 
-  @applyVol
+  @applyVol @Volunteering
   Scenario: Apply for an opportunity
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -87,7 +87,7 @@ Feature: Volunteering feature
       And User clicks on button "Confirm"
       #And User clicks on "sign-out"
 
-  @editVol
+  @editVol @Volunteering
   Scenario: Edit an Opportunity
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -107,7 +107,7 @@ Feature: Volunteering feature
         Then "Thank you for updating your volunteering opportunity" is displayed
         #And User clicks on "sign-out"
 
-  @searchVol
+  @searchVol @Volunteering
   Scenario: Search for an opportunity
     #Given User is on application home page
     When User enters value "md123" in "username" field
