@@ -21,8 +21,10 @@ Feature: Volunteering Grants
     And User enters value "Chai Lifeline" in "organisation"
     And User clicks on button "Search"
     And User selects option "1" from displayed "results"
-    And User enters value "Professional Skills 2022" in "title"
-    And User selects "29 August 2021" from "start_dts"
+    #And User enters value "Professional Skills 2022" in "title"
+    And User enters value in VG "title"
+    #And User selects "29 August 2021" from "start_dts"
+    And User selects start date for VG from "start_dts"
     And User clicks on "start_time" and selects value "09:00"
     And User clicks on "end_time" and selects value "10:00"
     And User clicks on "Physical location" option

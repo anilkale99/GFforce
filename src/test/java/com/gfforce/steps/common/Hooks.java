@@ -1,6 +1,7 @@
 package com.gfforce.steps.common;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import com.gfforce.pom.common.ContextSteps;
@@ -8,6 +9,7 @@ import com.gfforce.utilities.PropertiesOperation;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.openqa.selenium.WebElement;
 
 public class Hooks {
 	private ContextSteps contextSteps;
@@ -31,7 +33,10 @@ public class Hooks {
     public void afterScenario() throws InterruptedException{
         System.out.println("This will run after the Scenario");
         Thread.sleep(3000);
-        driver.findElement(By.linkText("Sign out")).click();
+        WebElement ele = driver.findElement(By.linkText("Sign out"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+        Thread.sleep(2000);
+        ele.click();
         Thread.sleep(3000);
         driver.quit();
         ContextSteps.initialized=false;

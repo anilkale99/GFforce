@@ -39,6 +39,18 @@ public class Volunteering extends BaseAction {
         verifyDetailsAreDisplayed(PropertiesOperation.getRadicalValueBykey("volunteeringOpportunityName"));
     }
 
+    public void selectStartDate(String datePickerName) throws Exception {
+        String date = PropertiesOperation.getRadicalValueBykey("volunteeringDate");
+        System.out.println("Volunteering date: " + date + " for datepicker: " + datePickerName);
+        selectDateFromDatePicker(date, datePickerName);
+    }
+
+    public void selectVGStartDate(String datePickerName) throws Exception {
+        String date = PropertiesOperation.getRadicalValueBykey("vgDate");
+        System.out.println("VG date: " + date + " for datepicker: " + datePickerName);
+        selectDateFromDatePicker(date, datePickerName);
+    }
+
     public void clickOnLink(String menuName) throws InterruptedException {
         clickByLinkText(menuName);
     }
@@ -62,7 +74,7 @@ public class Volunteering extends BaseAction {
         }
     }
 
-    public void clickAndSelectValue(String field, String value){
+    public void clickAndSelectValue(String field, String value) throws InterruptedException {
         clickElement(getLocatorForField(field));
         selectValueFromList(value, field);
     }
@@ -79,7 +91,7 @@ public class Volunteering extends BaseAction {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='deleteFile_1']")));
     }
 
-    public void clickAndSelectValuesFromMap(Map<String, String> fieldValueMap){
+    public void clickAndSelectValuesFromMap(Map<String, String> fieldValueMap) throws InterruptedException {
         for (String key: fieldValueMap.keySet()   ) {
             clickAndSelectValue(key, fieldValueMap.get(key));
         }
@@ -94,18 +106,18 @@ public class Volunteering extends BaseAction {
         driver.findElement(getLocatorForField("opportunity", opportunityName)).click();
     }
 
-    public void acceptAllTermsAndConditions(String forAction){
+    public void acceptAllTermsAndConditions(String forAction) throws InterruptedException {
         if (forAction.equals("volunteering")){
-            driver.findElement(By.xpath("//input[@id='checklist1']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist2']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist25']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist26']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist33']")).click();
-        } else if(forAction.equals("grants")){
-            driver.findElement(By.xpath("//input[@id='checklist27']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist28']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist29']")).click();
-            driver.findElement(By.xpath("//input[@id='checklist34']")).click();
+            scrollToElement(By.xpath("//input[@id='checklist1']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist2']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist25']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist26']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist33']"), "click");
+            } else if(forAction.equals("grants")){
+            scrollToElement(By.xpath("//input[@id='checklist27']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist28']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist29']"), "click");
+            scrollToElement(By.xpath("//input[@id='checklist34']"), "click");
         }
 
     }
@@ -134,7 +146,7 @@ public class Volunteering extends BaseAction {
         driver.findElement(By.xpath("//*[contains(text(), '"+ text +"')]//preceding-sibling::input")).click();
     }
 
-    public void clickOnAButton(String buttonName){
+    public void clickOnAButton(String buttonName) throws InterruptedException {
         clickElement(getLocatorForField(buttonName));
     }
 
@@ -148,6 +160,11 @@ public class Volunteering extends BaseAction {
 
     public void enterTitle(){
         enterValue(PropertiesOperation.getRadicalValueBykey("volunteeringOpportunityName"),
+                getLocatorForField("title"));
+    }
+
+    public void enterVGTitle(String fieldName){
+        enterValue(PropertiesOperation.getRadicalValueBykey("VGTitle"),
                 getLocatorForField("title"));
     }
 

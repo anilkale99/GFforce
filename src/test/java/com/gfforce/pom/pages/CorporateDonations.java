@@ -31,12 +31,12 @@ public class CorporateDonations extends BaseAction {
 
 
     public void enterValueInField(String field, String value) throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         scrollToElement(getLocatorFor(field),"");
         enterValue(value, getLocatorFor(field));
     }
 
-    public void clickOnButton(String buttonName){
+    public void clickOnButton(String buttonName) throws InterruptedException {
         clickElement(getLocatorFor(buttonName));
     }
 
