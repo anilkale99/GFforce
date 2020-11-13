@@ -41,24 +41,34 @@ public class BaseAction {
 		field.sendKeys(value);
 	}
 
-	public void clickElement(By locator) {
-		driver.findElement(locator).click();
+	public void clickElement(By locator) throws InterruptedException {
+		scrollToElement(locator, "click");
+		//driver.findElement(locator).click();
 	}
 
 	public void scrollToElement(String element, String action) throws InterruptedException {
 		WebElement ele = driver.findElement(CommonLocators.getLocatorForField(element));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		if (action.equals("click")){
 			ele.click();
 		}
 	}
 
-	public void scrollToElement(By locator, String action) throws InterruptedException {
-		Thread.sleep(1000);
+	public void scrollToLinkAndNavigate(By locator) throws InterruptedException {
+		Thread.sleep(4000);
 		WebElement ele = driver.findElement(locator);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
 		Thread.sleep(1000);
+		driver.navigate().to(ele.getAttribute("href"));
+	}
+
+
+	public void scrollToElement(By locator, String action) throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement ele = driver.findElement(locator);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+		Thread.sleep(3000);
 		if (action.equals("click")){
 			ele.click();
 		}
@@ -91,7 +101,7 @@ public class BaseAction {
 
 	public void clickByLinkText(String linkText) throws InterruptedException {
 		//driver.findElement(By.linkText(linkText)).click();
-		scrollToElement(By.linkText(linkText), "click");
+		scrollToLinkAndNavigate(By.linkText(linkText));
 	}
 
 	public void clickByPartialLinkText(String linkText) throws InterruptedException {

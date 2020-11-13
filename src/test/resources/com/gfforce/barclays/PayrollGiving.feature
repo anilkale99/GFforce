@@ -1,4 +1,4 @@
-@tag
+@tag @mdRegression
 Feature: Payroll Giving feature
 
 

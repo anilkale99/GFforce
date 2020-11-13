@@ -46,9 +46,19 @@ public class VolunteeringSteps extends Volunteering {
         selectValueWithIndex(index, value);
     }
 
+    @When("User selects start date from {string}")
+    public void userSelectsStartDate(String datePicker) throws Exception {
+        selectStartDate(datePicker);
+    }
+
     @When("User selects {string} from {string}")
     public void userSelectsDate(String date, String datePicker) throws Exception {
         selectDateFromDatePicker(date, datePicker);
+    }
+
+    @When("User selects start date for VG from {string}")
+    public void userSelectsDateForVG(String datePicker) throws Exception {
+        selectVGStartDate(datePicker);
     }
 
     @When("Visible options are")
@@ -67,7 +77,7 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on {string} and selects value {string}")
-    public void UserClickAndSelectValue(String field, String value) {
+    public void UserClickAndSelectValue(String field, String value) throws InterruptedException {
         clickAndSelectValue(field, value);
     }
 
@@ -82,7 +92,7 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on list to select value")
-    public void userClickOnListToSelectValue(Map<String, String> fieldValueMap) {
+    public void userClickOnListToSelectValue(Map<String, String> fieldValueMap) throws InterruptedException {
         clickAndSelectValuesFromMap(fieldValueMap);
     }
 
@@ -112,7 +122,7 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User accepts all terms and conditions for {string}")
-    public void userAcceptsAllTerms(String forAction) {
+    public void userAcceptsAllTerms(String forAction) throws InterruptedException {
         acceptAllTermsAndConditions(forAction);
     }
 
@@ -157,12 +167,12 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User clicks on button {string}")
-    public void userClicksOnButton(String buttonName) {
+    public void userClicksOnButton(String buttonName) throws InterruptedException {
         clickOnAButton(buttonName);
     }
 
     @When("User clicks on {string} option")
-    public void userClickOnOption(String optionName) {
+    public void userClickOnOption(String optionName) throws InterruptedException {
         clickOnAButton(optionName);
     }
 
@@ -175,6 +185,12 @@ public class VolunteeringSteps extends Volunteering {
     public void userEntersTitle(){
         enterTitle();
     }
+
+    @When("User enters value in VG {string}")
+    public void userEntersVGTitle(String fieldName){
+        enterVGTitle(fieldName);
+    }
+
 
     @When("Volunteering opportunities are displayed")
     public void volunteeringOpportunitiesAreDisplayed(){
