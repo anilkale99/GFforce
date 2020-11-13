@@ -1,3 +1,7 @@
 1. Add image, resize and upload
 2. Table utility class         - Done
 3. Random number utility method
+4. "Signout user" step needs to be part of hooks
+5. Taking screenshot: failure needs to be part of hooks
+6. Create "Artifact" folder under "target" folder with timestamp at runtime  to store all screenshot 
+6. 

@@ -2,6 +2,7 @@ package com.gfforce.steps.barclays.matchedfundraising;
 
 import java.util.List;
 
+import io.cucumber.java.en.And;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -16,25 +17,13 @@ import io.cucumber.java.en.When;
 
 public class MatchedFundRaisingSteps extends MatchedFundRaising{
 	
-	public By getEventLoc(String eventName){
-		return By.xpath("//a[contains(text(),'"+eventName+"')]");
-	}
-	
 	public MatchedFundRaisingSteps(ContextSteps contextSteps) {
         super(contextSteps);
     }
 	
-	public static By getLocatorForField(String fieldName){
-        By LOCATOR_VALUE = null;
-        switch(fieldName){
-            case "event_name": LOCATOR_VALUE = By.xpath("//input[@id='event_name']"); break;
-            case "coding_value": LOCATOR_VALUE = By.xpath("//input[@value='Select coding to add']"); break;
-            default:
-                System.out.println("Invalid case value: " + fieldName);
-        }
-        return LOCATOR_VALUE;
-    }
-	
+	public By getEventLoc(String eventName){
+		return By.xpath("//a[contains(text(),'"+eventName+"')]");
+	}
 	
 	@When("User enters MF event Name value {string} in {string} field")
     public void enterValueInfield(String value, String fieldName){
@@ -54,27 +43,10 @@ public class MatchedFundRaisingSteps extends MatchedFundRaising{
     public void enterValueInfield(String applicationName){
 		driver.findElement(this.getEventLoc(applicationName)).click();;
     }
+    
+    
 	
-	public void selectValueFromList(String inputValue, String listName){
-        By locator = null;
-        if (listName.contains("time")){
-            locator = By.xpath("//ul[@class='ui-timepicker-list']/li");
-        } else {
-            switch (listName) {
-                case "coding list":
-                    locator = By.xpath("//*[@id=\"coding_4_chzn\"]/div/ul/li");
-                    break;
-                default:
-                    System.out.println("Invalid locator or value provided: " + listName);
-            }
-        }
-        List<WebElement> allTimes = driver.findElements(locator);
-        for (WebElement ele: allTimes) {
-            if(ele.getText().equals(inputValue)){
-                ele.click();
-            }
-        }
-    }
+	
 	
 	@When("User validate matched fund raising application list")
     public void user_validate_matched_fund_raising_application_list(List<String> applicationList){
@@ -96,7 +68,16 @@ public class MatchedFundRaisingSteps extends MatchedFundRaising{
 		
 		
     }
-	
-	
 
+
+	@And("User on MF enters value {string} in {string} field")
+	public void userOnMFEntersValueInField(String value, String fieldName) {
+		enterValue(value, this.getLocatorForField(fieldName));
+	}
+
+	@And("User on MF click element {string}")
+	public void userOnMFClickElement(String fieldName) {
+		clickElement(this.getLocatorForField(fieldName));
+
+	}
 }

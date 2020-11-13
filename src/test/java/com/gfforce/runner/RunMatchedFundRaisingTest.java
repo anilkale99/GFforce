@@ -10,6 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 		
 		features={"src/test/resources/com/gfforce/barclays/MatchedFundRaising.feature"},
 		glue={"com.gfforce.steps"},
+		monochrome=true,
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
 				"json:target/json-report/cucumber-reportMatchedFundRaising.json"

@@ -8,15 +8,16 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		
-		features={"src/test/resources/com/gfforce/barclays/Test.feature"},
+		features={"src/test/resources/com/gfforce/barclays/PayrollGiving.feature"},
 		glue={"com.gfforce.steps"},
+		monochrome=true,
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
-				"json:target/json-report/cucumber-report11121.json"
+				"json:target/json-report/cucumber-reportPayrollGivingSteps.json"
 		}
 
 		
 		)
-public class RunOpportunityTest {
+public class RunPayRollGivingTest {
 
 }
