@@ -34,6 +34,7 @@ public class PayrollGiving extends BaseAction {
             case "Modify instruction": LOCATOR_VALUE = By.xpath("//a[@title='"+fieldName+"']"); break;
             case "Continue": LOCATOR_VALUE = By.xpath("//*[@name='continue' and @type='button'] | //*[@name='continue' and @id='continue_button'] | //*[@name='continue' and @type='submit' and @value='Continue >'] | //*[@type='submit' and @value='Continue']"); break;
             case "Submit your instruction": LOCATOR_VALUE = By.xpath("//input[@value='"+fieldName+"'] "); break;
+            case "Confirm": LOCATOR_VALUE = By.xpath("//input[@name='"+fieldName+"'] "); break;
 
             default:
                 System.out.println("Invalid case value: " + fieldName);
