@@ -35,9 +35,13 @@ public class DateSelector {
         String monthYearTextLocator = "//*[@class='datepicker-days']/table/thead/tr[2]/th[2]";
         String nextButton = "//*[@class='datepicker-days']/table/thead/tr[2]/th[3]";
         String allRowsLocator = "//*[@class='datepicker-days']/table/tbody/tr";
-        String day = date.substring(0,2);
-        String monthYear = date.substring(3);
+        String[] values = date.split(" ");
+        String day = values[0];
+        String monthYear = values[1] + " " + values[2];
         String monthYearOnCalendar = driver.findElement(By.xpath(monthYearTextLocator)).getText();
+        System.out.println("day: " + day);
+        System.out.println("monthyear: " + monthYear);
+        System.out.println("monthyearoncalendar: " + monthYearOnCalendar);
 
         while(! monthYear.equals(monthYearOnCalendar)) {
             driver.findElement(By.xpath(nextButton)).click();

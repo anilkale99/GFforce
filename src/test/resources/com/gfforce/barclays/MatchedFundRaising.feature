@@ -1,4 +1,4 @@
-@tag
+@tag @mdRegression
 Feature: Matched Fund Raising feature
 
 

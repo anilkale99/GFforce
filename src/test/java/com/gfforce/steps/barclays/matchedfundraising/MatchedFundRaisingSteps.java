@@ -76,7 +76,7 @@ public class MatchedFundRaisingSteps extends MatchedFundRaising{
 	}
 
 	@And("User on MF click element {string}")
-	public void userOnMFClickElement(String fieldName) {
+	public void userOnMFClickElement(String fieldName) throws InterruptedException {
 		clickElement(this.getLocatorForField(fieldName));
 
 	}
