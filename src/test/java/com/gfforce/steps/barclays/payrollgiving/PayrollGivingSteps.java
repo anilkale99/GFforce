@@ -92,23 +92,24 @@ public class PayrollGivingSteps extends PayrollGiving{
 
 	@And("User on PG clicks on {string}")
 	public void userOnPGClicksOn(String fieldName) {
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(this.getLocatorForField("modify the existing instruction"))).click();
-		}catch (Exception e){
+		if(fieldName.equals("Continue")) {
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(this.getLocatorForField("modify the existing instruction"))).click();
+			} catch (Exception e) {
+			}
 		}
 		driver.findElement(CommonLocators.getLocatorForField(fieldName)).click();
 	}
 
 	@And("User on PG clicks on element {string}")
 	public void userOnPGClicksOnElement(String fieldName) throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(this.getLocatorForField("modify the existing instruction"))).click();
-		}catch (Exception e){
-		}
-		if(fieldName.equals("sign-out")){
-			Thread.sleep(3000);
+		if(fieldName.equals("Continue")) {
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(this.getLocatorForField("modify the existing instruction"))).click();
+			} catch (Exception e) {
+			}
 		}
 		driver.findElement(this.getLocatorForField(fieldName)).click();
 	}

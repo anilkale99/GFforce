@@ -24,8 +24,8 @@ Scenario: 1.Create Payroll Giving Instruction to Organisation
 	And User clicks on "Continue"
 	And User selects preference
         | 1 | checkbox11 |
-	And User on PG clicks on element "Submit your instruction"
-	Then "Thank you for your payroll donation" details are displayed
+	And User on PG clicks on element "Confirm"
+	Then "Thank you" details are displayed
 	#And User on PG clicks on element "sign-out"
 
 	@PayrollGiving
@@ -50,7 +50,7 @@ Scenario: 1.Create Payroll Giving Instruction to Organisation
 		And User clicks on "Continue"
 		And User selects preference
 			| 1 | checkbox11 |
-		And User on PG clicks on element "Submit your instruction"
+		And User on PG clicks on element "Confirm"
 		Then "Thank you for your payroll donation" details are displayed
 		#And User clicks on "sign-out"
 
@@ -91,7 +91,7 @@ Scenario: 1.Create Payroll Giving Instruction to Organisation
 		And User clicks on "Continue"
 		And User selects preference
 			| 1 | checkbox11 |
-		And User clicks on "Confirm"
+		And User on PG clicks on element "Confirm"
 		Then "Your payroll donation request has been modified" details are displayed
 		#And User clicks on "sign-out"
 
