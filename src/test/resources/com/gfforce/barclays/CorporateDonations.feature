@@ -1,5 +1,7 @@
-@mdRegression
+@mdRegression @CorporateDonations
 Feature: Corporate Donations
+
+  @CorporateDonations
   Scenario: Create a corporate donation
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -27,6 +29,7 @@ Feature: Corporate Donations
     And Store the CD reference number
     Then "Thank you for requesting a corporate donation" page is displayed
 
+  @CorporateDonations
     Scenario: Verify the newly create Corporate Donation request
       When User enters value "md123" in "username" field
       And User enters value "Abcd@12345" in "password" field
@@ -41,6 +44,7 @@ Feature: Corporate Donations
           | Country group      | Barclays-UK |
           | Email              | jyoti.singh@givingforce.com |
 
+  @CorporateDonations
   Scenario: View Corporate Donation requests from View applications
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field

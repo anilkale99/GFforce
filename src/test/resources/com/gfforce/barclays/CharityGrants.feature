@@ -1,7 +1,7 @@
-@mdRegression
+@mdRegression @CharityGrants
 Feature: Charity Grants feature
 
-  @createCG
+  @createCG @CharityGrants
   Scenario: Create Charity Grant Nomination
     #Given User is on application home page
     When User enters value "md123" in "username" field
@@ -50,6 +50,7 @@ Feature: Charity Grants feature
     And Store the nomination id
     Then "Thank you!" is displayed
 
+  @CharityGrants
     Scenario: Verify the newly create nomination
       When User enters value "md123" in "username" field
       And User enters value "Abcd@12345" in "password" field
@@ -65,7 +66,7 @@ Feature: Charity Grants feature
         | Email      | jyoti.singh@givingforce.com |
     #And User clicks on "sign-out"
 
-    @viewCG
+    @viewCG @CharityGrants
   Scenario: Verify User is able to see CG Nomination on applications page
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
@@ -79,6 +80,7 @@ Feature: Charity Grants feature
           | Status           | In progress               |
       #And User clicks on "sign-out"
 
+  @CharityGrants
   Scenario: View Charity Grant nominations
     When User enters value "md123" in "username" field
     And User enters value "Abcd@12345" in "password" field
