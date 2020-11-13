@@ -71,27 +71,6 @@ Scenario: 1.Create Payroll Giving Instruction to Organisation
 		#And User clicks on "sign-out"
 
 	@PayrollGiving
-	Scenario: 4.Cancel Payroll Giving Instruction
-		When User enters value "md123" in "username" field
-		And User enters value "Abcd@12345" in "password" field
-		And User clicks on "sign-in"
-		When User clicks on "Payroll Giving" menu
-		And User clicks on "Your Instructions" sub-menu
-		And User enters search value "111.50" in "search" search donation
-		And User select Amount value "Amount" from "within" dropdown
-		And User select Include value "All instructions" from "include" dropdown
-		And User on PG clicks on element "Go"
-		Then User on PG validate your instructions list
-			|111.50|
-		And User on PG clicks on element "Cancel instruction"
-		And User selects preference
-			| 1 | checkbox12 |
-		And User on PG clicks on element "Continue"
-		Then "Your payroll donation request has been cancelled" details are displayed
-		#And User clicks on "sign-out"
-
-
-	@PayrollGiving
 	Scenario: 5.Modify Payroll Giving Instruction
 		When User enters value "md123" in "username" field
 		And User enters value "Abcd@12345" in "password" field
@@ -114,6 +93,26 @@ Scenario: 1.Create Payroll Giving Instruction to Organisation
 			| 1 | checkbox11 |
 		And User clicks on "Confirm"
 		Then "Your payroll donation request has been modified" details are displayed
+		#And User clicks on "sign-out"
+
+	@PayrollGiving
+	Scenario: 4.Cancel Payroll Giving Instruction
+		When User enters value "md123" in "username" field
+		And User enters value "Abcd@12345" in "password" field
+		And User clicks on "sign-in"
+		When User clicks on "Payroll Giving" menu
+		And User clicks on "Your Instructions" sub-menu
+		And User enters search value "111.50" in "search" search donation
+		And User select Amount value "Amount" from "within" dropdown
+		And User select Include value "All instructions" from "include" dropdown
+		And User on PG clicks on element "Go"
+		Then User on PG validate your instructions list
+			|111.50|
+		And User on PG clicks on element "Cancel instruction"
+		And User selects preference
+			| 1 | checkbox12 |
+		And User on PG clicks on element "Continue"
+		Then "Your payroll donation request has been cancelled" details are displayed
 		#And User clicks on "sign-out"
 
 
