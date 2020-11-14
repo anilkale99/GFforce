@@ -127,7 +127,7 @@ public class VolunteeringSteps extends Volunteering {
     }
 
     @When("User selects preference")
-    public void userSelectsPreference(Map<String, String> userPreference) {
+    public void userSelectsPreference(Map<String, String> userPreference) throws InterruptedException {
         selectPreference(userPreference);
     }
 
@@ -144,6 +144,16 @@ public class VolunteeringSteps extends Volunteering {
     @When("User clicks on Apply for a grant")
     public void userClicksApplyForGrant() {
         clickApplyForGrant();
+    }
+
+    @When("User clicks on {string} link")
+    public void userClicksUpdateGrant(String linkName) throws InterruptedException {
+        clickByPartialLinkText(linkName);
+    }
+
+    @When("User clicks on Apply for a grant link")
+    public void userClicksApplyForGrantLink() throws InterruptedException {
+        clickByLinkText("Apply for a grant");
     }
 
     @When("User scrolls to {string} to {string}")

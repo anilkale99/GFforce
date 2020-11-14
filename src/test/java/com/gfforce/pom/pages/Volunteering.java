@@ -122,9 +122,10 @@ public class Volunteering extends BaseAction {
 
     }
 
-    public void selectPreference(Map<String, String> userPreference){
+    public void selectPreference(Map<String, String> userPreference) throws InterruptedException {
         for (String key: userPreference.keySet()) {
-            driver.findElement(By.xpath("//*[@id='"+userPreference.get(key)+"']")).click();
+            //driver.findElement(By.xpath("//*[@id='"+userPreference.get(key)+"']")).click();
+            scrollToElement(By.xpath("//*[@id='"+userPreference.get(key)+"']"), "click");
         }
     }
 
