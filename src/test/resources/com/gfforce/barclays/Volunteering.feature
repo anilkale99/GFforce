@@ -59,34 +59,6 @@ Feature: Volunteering feature
     And User clicks on button "Submit and Finish"
     #And User clicks on "sign-out"
 
-  @applyVol @Volunteering
-  Scenario: Apply for an opportunity
-    When User enters value "md123" in "username" field
-    And User enters value "Abcd@12345" in "password" field
-    And User clicks on "sign-in"
-    When User clicks on "Volunteering" menu
-    And User clicks on "Search Opportunities" sub-menu
-    Then All open opportunities are displayed
-    #When User scrolls down 1 page
-    #Update opportunity name before running scenario
-    #And User clicks on "Charity June 2021" opportunity
-    #Then "Charity June 2021" details are displayed
-    When User clicks on link "50"
-    When User clicks on an opportunity
-    Then Opportunity details are displayed
-    When User clicks on button "Apply Now"
-    Then "Sign up to volunteer" details are displayed
-    When User accepts all terms and conditions for "volunteering"
-    #And User scrolls down 1 page
-    And User scrolls to "Continue" to "click"
-    And User selects preference
-        | 1 | checkbox5 |
-        | 2 | checkbox4 |
-      And User clicks on "Continue"
-      And User clicks on button "Next"
-      And User clicks on button "Confirm"
-      #And User clicks on "sign-out"
-
   @editVol @Volunteering
   Scenario: Edit an Opportunity
     When User enters value "md123" in "username" field
@@ -124,7 +96,7 @@ Feature: Volunteering feature
     When User clicks on "Search Opportunities" sub-menu
     And User enters value "411001" in "postcode"
     And User selects value "Coaching" from "hashtag" dropdown
-    And User enters value "24 Nov 2020" in "from_date"
+    And User enters value "30 Nov 2020" in "from_date"
     And User enters value "30 Nov 2021" in "to_date"
     And User clicks on button "go"
     Then Volunteering opportunities are displayed
@@ -135,7 +107,33 @@ Feature: Volunteering feature
           | Virtual volunteering |
           | At a specific location |
 
-
+  @applyVol @Volunteering
+  Scenario: Apply for an opportunity
+    When User enters value "md123" in "username" field
+    And User enters value "Abcd@12345" in "password" field
+    And User clicks on "sign-in"
+    When User clicks on "Volunteering" menu
+    And User clicks on "Search Opportunities" sub-menu
+    Then All open opportunities are displayed
+    #When User scrolls down 1 page
+    #Update opportunity name before running scenario
+    #And User clicks on "Charity June 2021" opportunity
+    #Then "Charity June 2021" details are displayed
+    When User clicks on link "50"
+    When User clicks on an opportunity
+    Then Opportunity details are displayed
+    When User clicks on button "Apply Now"
+    Then "Sign up to volunteer" details are displayed
+    When User accepts all terms and conditions for "volunteering"
+    #And User scrolls down 1 page
+    And User scrolls to "Continue" to "click"
+    And User selects preference
+      | 1 | checkbox5 |
+      | 2 | checkbox4 |
+    And User clicks on "Continue"
+    And User clicks on button "Next"
+    And User clicks on button "Confirm"
+      #And User clicks on "sign-out"
 
 
 
