@@ -58,11 +58,11 @@ Feature: Volunteering Grants
     And User clicks on "accept covid guidelines" option
     And User clicks on button "Next"
     And User clicks on button "Submit and Finish"
-    #And User clicks on "sign-out"
+
   Examples:
     | title | volDate |
-    | Vol For VG - 9 | 24 March 2021 |
-    | Vol For VG - 10 | 21 October 2021 |
+    | Vol For VG - 13 | 26 March 2021 |
+    | Vol For VG - 14 | 23 October 2021 |
 
   @vgTest @VolunteeringGrants
   Scenario: Create Volunteering Grants application
@@ -123,7 +123,7 @@ Feature: Volunteering Grants
     And User clicks on button "Next"
     And User scrolls to "Confirm" to "click"
     Then "Your volunteering reference number is" is displayed
-    #And User clicks on "sign-out"
+
 
     @vgTest @VolunteeringGrants
   Scenario: Update Volunteering Grant application
@@ -141,7 +141,6 @@ Feature: Volunteering Grants
     And User scrolls to "Update" to "click"
     Then "Thank you for updating your application" is displayed
     And "Back to your homepage" is displayed
-      #And User clicks on "sign-out"
 
   @vgTest @VolunteeringGrants
   Scenario: Edit Volunteering application to create Volunteering Grant application
@@ -153,7 +152,7 @@ Feature: Volunteering Grants
     Then "Volunteering opportunities" is displayed
     When User clicks on link "50"
     #When User clicks on "Official Chai Pe Charcha (VOL433144-38)" opportunity
-    When User clicks on "Vol For VG - 10" link
+    When User clicks on "Vol For VG - 14" link
     And User clicks on button "Apply Now"
     And User accepts all terms and conditions for "volunteering"
     And User scrolls to "Continue" to "click"
@@ -179,7 +178,7 @@ Feature: Volunteering Grants
     Then All open opportunities are displayed
     When User clicks on link "50"
     #Update opportunity name before running scenario
-    And User clicks on "Vol For VG - 9" opportunity
+    And User clicks on "Vol For VG - 13" opportunity
     #Then "Charity June 2021" details are displayed
     When User clicks on button "Apply Now"
     Then "Sign up to volunteer" details are displayed
@@ -212,4 +211,3 @@ Feature: Volunteering Grants
       And User scrolls to "Submit" to "click"
       Then "Thank you for applying your application" is displayed
       And "Back to your homepage" is displayed
-      #And User clicks on "sign-out"

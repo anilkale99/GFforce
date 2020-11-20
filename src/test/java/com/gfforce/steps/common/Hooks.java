@@ -32,12 +32,21 @@ public class Hooks {
     @After
     public void afterScenario() throws InterruptedException{
         System.out.println("This will run after the Scenario");
-        Thread.sleep(3000);
-        WebElement ele = driver.findElement(By.linkText("Sign out"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-        Thread.sleep(2000);
-        ele.click();
-        Thread.sleep(3000);
+        try{
+            Thread.sleep(2000);
+            WebElement ele = driver.findElement(By.linkText("Sign out"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+            Thread.sleep(2000);
+            ele.click();
+        } catch (Exception e) {
+            Thread.sleep(2000);
+            driver.navigate().refresh();
+            WebElement ele = driver.findElement(By.linkText("Sign out"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+            Thread.sleep(2000);
+            ele.click();
+        }
+        Thread.sleep(1000);
         driver.quit();
         ContextSteps.initialized=false;
     }

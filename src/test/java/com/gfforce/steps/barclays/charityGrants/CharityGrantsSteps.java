@@ -48,6 +48,11 @@ public class CharityGrantsSteps extends CharityGrants {
         scrollToButtonToClick(element, action);
     }
 
+    @When("User scrolls to Submit button to {string}")
+    public void userScrollsToSubmitButtonToClick(String action) throws InterruptedException {
+        scrollToSubmitButtonToClick(action);
+    }
+
     @When("Store the nomination id")
     public void userStoreNominationID() {
         storeNominationID();

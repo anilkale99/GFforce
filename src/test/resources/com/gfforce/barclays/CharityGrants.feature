@@ -46,7 +46,7 @@ Feature: Charity Grants feature
         | Item | Description | 1500 | null |
         | Item1 | Description1 | 1500 | null |
     And User scrolls to button "Continue" to "click"
-    And User scrolls to button "Submit" to "click"
+    And User scrolls to Submit button to "click"
     And Store the nomination id
     Then "Thank you!" is displayed
 

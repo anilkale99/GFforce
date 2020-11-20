@@ -49,14 +49,14 @@ public class BaseAction {
 	public void scrollToElement(String element, String action) throws InterruptedException {
 		WebElement ele = driver.findElement(CommonLocators.getLocatorForField(element));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		if (action.equals("click")){
 			ele.click();
 		}
 	}
 
 	public void scrollToLinkAndNavigate(By locator) throws InterruptedException {
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		WebElement ele = driver.findElement(locator);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
 		Thread.sleep(1000);
@@ -65,10 +65,10 @@ public class BaseAction {
 
 
 	public void scrollToElement(By locator, String action) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		WebElement ele = driver.findElement(locator);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		if (action.equals("click")){
 			ele.click();
 		}
@@ -110,7 +110,7 @@ public class BaseAction {
 	}
 
 	public void validateSubMenuOptions(List<String> subMenuOptions) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		for (String optionName: subMenuOptions) {
 			try {
 				List<WebElement> list = driver.findElements(By.xpath("//*[text()='" + optionName + "']"));
@@ -131,7 +131,7 @@ public class BaseAction {
 		int page = 400;
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0," + page*numberOfPages +")");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 	}
 
 	public void selectDateFromDatePicker(String date, String datePicker) throws Exception {
