@@ -79,6 +79,12 @@ public class CharityGrants extends BaseAction {
         scrollToElement(locator, "click");
     }
 
+    public void scrollToSubmitButtonToClick(String action) throws InterruptedException {
+        By locator = getLocatorForField("Submit");
+        Thread.sleep(4000);
+        scrollToElement(locator,action);
+    }
+
     public void storeNominationID(){
         ContextSteps.contextValuesMap.put("nominationID", driver.findElement(By.partialLinkText("CGN-")).getText());
     }

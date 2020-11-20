@@ -127,6 +127,7 @@ Feature: Volunteering feature
     When User accepts all terms and conditions for "volunteering"
     #And User scrolls down 1 page
     And User scrolls to "Continue" to "click"
+    And User clicks on "Continue" when popup appears
     And User selects preference
       | 1 | checkbox5 |
       | 2 | checkbox4 |
