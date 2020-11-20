@@ -8,14 +8,14 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		
-		features={"src/test/resources/com/gfforce/barclays"},
+		features={"src/test/resources/com/gfforce/barclays/Volunteering.feature"},
 		glue={"com.gfforce.steps"},
 		monochrome=true,
 		plugin={"pretty",
 				"html:target/cucumber-htmlreport",
 				"json:target/json-report/cucumber-reportVolunteering.json"
 		}
-		,tags = {"@mdRegression"}
+		//,tags = {"@mdRegression"}
 
 		
 		)
